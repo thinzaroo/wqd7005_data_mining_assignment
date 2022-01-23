@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?><_ROOT_ EMVERSION="14.1" ORIENTATION="HORIZONTAL">
+<Workspace>
+<NODES>
+<NODE CLASS="SASHELP.EMCORE.EXTENSION.CLASS" COMPONENT="EMSave" ID="EMSave" X="823" Y="37" DESCRIPTION="Save Data" DIAGRAMID="_ROOT_" PARENTID="" TOOLTYPE="UTILITY" TOOLPREFIX="EMSave">
+<PROPERTIES Location="CATALOG" Catalog="Sashelp.Emutil.Savext.Source" Type="SAS7BDAT" Replace="Y" AllObs="Y" OutObs="1000" AllRoles="Y" Train="Y" Validate="Y" Test="Y" Score="Y" Transaction="Y" ForceRun="N" RunAction="Train" Component="EMSave" Lib="" DirectorySelector="" Name="">
+<VariableProperties/>
+<EmVariableAttributes/>
+<EmTargetAttributes/>
+<EmFileProperties>
+<USERTRAINCODE Type="EXTERNAL" Extension="sas">
+<Data/>
+</USERTRAINCODE>
+<EMNOTES Type="EXTERNAL" Extension="txt">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE CLASS="SASHELP.EMCORE.EXTENSION.CLASS" COMPONENT="FileImport" ID="FIMPORT" X="38" Y="35" DESCRIPTION="File Import" DIAGRAMID="_ROOT_" PARENTID="" TOOLTYPE="SAMPLE" TOOLPREFIX="FIMPORT">
+<PROPERTIES Location="CATALOG" Catalog="SASHELP.EMSAMP.Fimport.SOURCE" ImportType="Local" GuessRows="500" Delimiter="," NameRow="Y" SkipRows="0" MaxRows="1000000" MaxCols="10000" FileType="csv" Role="TRAIN" ForceRun="N" Summarize="N" AdvancedAdvisor="N" RunAction="Train" Component="FileImport" IFileName="C:\Users\user\Downloads\dataSet_house.csv" AccessTable="NoTableName" UserID="NoUserID" Password="NoPassword">
+<VariableProperties/>
+<EmVariableAttributes>
+<DELTA Variable="city" AttributeName="ROLE" AttributeValue="REJECTED"/>
+<DELTA Variable="pricePerSizeUnitBuiltUp" AttributeName="ROLE" AttributeValue="REJECTED"/>
+<DELTA Variable="rental" AttributeName="ROLE" AttributeValue="TARGET"/>
+</EmVariableAttributes>
+<EmTargetAttributes/>
+<EmFileProperties>
+<USERTRAINCODE Type="EXTERNAL" Extension="sas">
+<Data/>
+</USERTRAINCODE>
+<VARIABLESETDELTA Type="EXTERNAL" Extension="txt">
+<Data><![CDATA[
+if NAME=&quot;city&quot; then do;
+ROLE=&quot;REJECTED&quot;;
+LEVEL=&quot;NOMINAL&quot;;
+ORDER=&quot;&quot;;
+DROP=&quot;N&quot;;
+end;
+if NAME=&quot;pricePerSizeUnitBuiltUp&quot; then do;
+ROLE=&quot;REJECTED&quot;;
+LEVEL=&quot;INTERVAL&quot;;
+ORDER=&quot;&quot;;
+DROP=&quot;N&quot;;
+end;
+if NAME=&quot;rental&quot; then do;
+ROLE=&quot;TARGET&quot;;
+LEVEL=&quot;INTERVAL&quot;;
+ORDER=&quot;&quot;;
+DROP=&quot;N&quot;;
+end;
+]]>
+</Data>
+</VARIABLESETDELTA>
+<DELTACODE Type="EXTERNAL" Extension="txt">
+<Data><![CDATA[
+if NAME=&quot;city&quot; then do;
+ROLE=&quot;REJECTED&quot;;
+LEVEL=&quot;NOMINAL&quot;;
+ORDER=&quot;&quot;;
+end;
+if NAME=&quot;pricePerSizeUnitBuiltUp&quot; then do;
+ROLE=&quot;REJECTED&quot;;
+LEVEL=&quot;INTERVAL&quot;;
+ORDER=&quot;&quot;;
+end;
+if NAME=&quot;rental&quot; then do;
+ROLE=&quot;TARGET&quot;;
+LEVEL=&quot;INTERVAL&quot;;
+ORDER=&quot;&quot;;
+end;
+drop DROP;
+]]>
+</Data>
+</DELTACODE>
+<EMNOTES Type="EXTERNAL" Extension="txt">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE CLASS="SASHELP.EMMDFY.FILTERTOOL.CLASS" COMPONENT="Filter" ID="Filter" X="219" Y="35" DESCRIPTION="Filter" DIAGRAMID="_ROOT_" PARENTID="" TOOLTYPE="MODIFY" TOOLPREFIX="Filter">
+<PROPERTIES KeepMissingClass="Y" KeepMissingInterval="Y" NormalizeClassValue="Y" ExportTable="FILTERED" TabletoFilter="TRAIN" IntervalFilterMethod="STDDEV" ClassFilterMethod="MINPCT" MinFreq="1" MinPercent="0.01" MaxValues="25" MADSCutoff="9" SpacingsCutoff="9" StddevCutoff="3" PercentsCutoff="0.5" PublishScoreCode="Y" CreateDistributionData="Y" UpdateClassLevel="N" ForceRun="N" RunAction="Train" Component="Filter">
+<VariableProperties/>
+<EmVariableAttributes>
+<DELTA Variable="bathrooms" AttributeName="CALCMETHOD" AttributeValue="NONE"/>
+<DELTA Variable="bedrooms" AttributeName="CALCMETHOD" AttributeValue="NONE"/>
+<DELTA Variable="bedrooms" AttributeName="KEEPMISSING" AttributeValue="Y"/>
+<DELTA Variable="buildingId" AttributeName="CALCMETHOD" AttributeValue="NONE"/>
+<DELTA Variable="builtUp" AttributeName="CALCMETHOD" AttributeValue="NONE"/>
+<DELTA Variable="carParks" AttributeName="CALCMETHOD" AttributeValue="NONE"/>
+<DELTA Variable="city" AttributeName="CALCMETHOD" AttributeValue="NONE"/>
+<DELTA Variable="city" AttributeName="KEEPMISSING" AttributeValue="Y"/>
+<DELTA Variable="district" AttributeName="CALCMETHOD" AttributeValue="NONE"/>
+<DELTA Variable="district" AttributeName="KEEPMISSING" AttributeValue="Y"/>
+<DELTA Variable="furnishing" AttributeName="CALCMETHOD" AttributeValue="NONE"/>
+<DELTA Variable="furnishing" AttributeName="KEEPMISSING" AttributeValue="Y"/>
+<DELTA Variable="lat" AttributeName="CALCMETHOD" AttributeValue="NONE"/>
+<DELTA Variable="lng" AttributeName="CALCMETHOD" AttributeValue="NONE"/>
+<DELTA Variable="name" AttributeName="CALCMETHOD" AttributeValue="NONE"/>
+<DELTA Variable="name" AttributeName="KEEPMISSING" AttributeValue="Y"/>
+<DELTA Variable="postedDate" AttributeName="CALCMETHOD" AttributeValue="NONE"/>
+<DELTA Variable="pricePerSizeUnitBuiltUp" AttributeName="CALCMETHOD" AttributeValue="NONE"/>
+<DELTA Variable="propertyName" AttributeName="CALCMETHOD" AttributeValue="NONE"/>
+<DELTA Variable="propertyName" AttributeName="KEEPMISSING" AttributeValue="Y"/>
+<DELTA Variable="propertyType" AttributeName="CALCMETHOD" AttributeValue="MINFREQ"/>
+<DELTA Variable="propertyType" AttributeName="KEEPMISSING" AttributeValue="Y"/>
+<DELTA Variable="propertyType" AttributeName="MINFREQ" AttributeValue="10"/>
+<DELTA Variable="rental" AttributeName="CALCMETHOD" AttributeValue="MANUAL"/>
+<DELTA Variable="rental" AttributeName="INTERVALMIN" AttributeValue="400"/>
+<DELTA Variable="rental" AttributeName="INTERVALMAX" AttributeValue="48000"/>
+<DELTA Variable="unitType" AttributeName="CALCMETHOD" AttributeValue="NONE"/>
+<DELTA Variable="unitType" AttributeName="KEEPMISSING" AttributeValue="Y"/>
+</EmVariableAttributes>
+<EmTargetAttributes/>
+<EmFileProperties>
+<CLASSFILTER Type="DATA">
+<Data/>
+<Metadata>
+<Variable NAME="VARIABLE" LABEL="Variable" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="VALUE" LABEL="Value" LENGTH="80" FORMAT="" TYPE="C"/>
+<Variable NAME="COUNT" LABEL="Frequency Count" LENGTH="8" FORMAT="" TYPE="N"/>
+<Variable NAME="PERCENT" LABEL="Percent" LENGTH="8" FORMAT="" TYPE="N"/>
+<Variable NAME="Filter" LABEL="" LENGTH="1" FORMAT="" TYPE="C"/>
+</Metadata>
+</CLASSFILTER>
+<EMNOTES Type="EXTERNAL" Extension="txt">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE CLASS="SASHELP.EMMDFY.EMIMPUTE.CLASS" COMPONENT="Impute" ID="Impt" X="399" Y="37" DESCRIPTION="Impute" DIAGRAMID="_ROOT_" PARENTID="" TOOLTYPE="MODIFY" TOOLPREFIX="Impt">
+<PROPERTIES MethodInterval="CONSTANT" MethodClass="CONSTANT" MethodTargetInterval="NONE" MethodTargetClass="NONE" ABWTuning="9" AHUBERTuning="1.5" AWAVETuning="6.2831853072" SpacingProportion="90" DefaultChar="Unknown" DefaultNum="0" RandomSeed="12345" Normalize="Y" ImputeNoMissing="N" MaxPctMissing="50" ValidateTestMissing="N" DistributionMissing="N" LeafSize="5" Maxbranch="2" Maxdepth="6" MinCatSize="5" Nrules="5" Nsurrs="2" Splitsize="." Indicator="NONE" IndicatorRole="REJECTED" ReplaceVariable="N" HideVariable="N" IndicatorSource="IMPUTED" ForceRun="N" RunAction="Train" Component="Impute">
+<VariableProperties/>
+<EmVariableAttributes>
+<DELTA Variable="bathrooms" AttributeName="USE" AttributeValue="Y"/>
+<DELTA Variable="bathrooms" AttributeName="METHOD" AttributeValue="MEDIAN"/>
+<DELTA Variable="bedrooms" AttributeName="USE" AttributeValue="N"/>
+<DELTA Variable="buildingId" AttributeName="USE" AttributeValue="N"/>
+<DELTA Variable="builtUp" AttributeName="USE" AttributeValue="Y"/>
+<DELTA Variable="builtUp" AttributeName="METHOD" AttributeValue="ABW"/>
+<DELTA Variable="carParks" AttributeName="USE" AttributeValue="Y"/>
+<DELTA Variable="carParks" AttributeName="METHOD" AttributeValue="CONSTANT"/>
+<DELTA Variable="carParks" AttributeName="USETREE" AttributeValue="N"/>
+<DELTA Variable="city" AttributeName="USE" AttributeValue="N"/>
+<DELTA Variable="district" AttributeName="USE" AttributeValue="N"/>
+<DELTA Variable="furnishing" AttributeName="USE" AttributeValue="Y"/>
+<DELTA Variable="furnishing" AttributeName="METHOD" AttributeValue="CONSTANT"/>
+<DELTA Variable="furnishing" AttributeName="USETREE" AttributeValue="N"/>
+<DELTA Variable="lat" AttributeName="USE" AttributeValue="Y"/>
+<DELTA Variable="lat" AttributeName="METHOD" AttributeValue="TREE"/>
+<DELTA Variable="lat" AttributeName="USETREE" AttributeValue="Y"/>
+<DELTA Variable="lng" AttributeName="USE" AttributeValue="Y"/>
+<DELTA Variable="lng" AttributeName="METHOD" AttributeValue="TREE"/>
+<DELTA Variable="lng" AttributeName="USETREE" AttributeValue="Y"/>
+<DELTA Variable="name" AttributeName="USE" AttributeValue="N"/>
+<DELTA Variable="pricePerSizeUnitBuiltUp" AttributeName="USE" AttributeValue="N"/>
+<DELTA Variable="propertyName" AttributeName="USE" AttributeValue="N"/>
+<DELTA Variable="propertyType" AttributeName="USE" AttributeValue="N"/>
+<DELTA Variable="rental" AttributeName="USE" AttributeValue="N"/>
+<DELTA Variable="unitType" AttributeName="USE" AttributeValue="N"/>
+</EmVariableAttributes>
+<EmTargetAttributes/>
+<EmFileProperties>
+<EMNOTES Type="EXTERNAL" Extension="txt">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE CLASS="SASHELP.EMCORE.EXTENSION.CLASS" COMPONENT="Replace" ID="Repl" X="617" Y="36" DESCRIPTION="Replacement" DIAGRAMID="_ROOT_" PARENTID="" TOOLTYPE="MODIFY" TOOLPREFIX="Repl">
+<PROPERTIES Location="CATALOG" Catalog="SASHELP.EMMDFY.REPLACE.SOURCE" HideVariable="N" UnknownLevel="NONE" ReplaceMethod="COMPUTED" CalcMethod="MANUAL" MADSCutoff="9.0" SpacingsCutoff="9.0" StddevCutoff="3.0" PercentsCutoff="0.5" CountReport="Y" ForceRun="N" RunAction="Train" Component="Replace" IntervalMethod="NONE" DataNeeded="Y">
+<VariableProperties/>
+<EmVariableAttributes>
+<DELTA Variable="IMP_bathrooms" AttributeName="USE" AttributeValue="N"/>
+<DELTA Variable="IMP_builtUp" AttributeName="USE" AttributeValue="N"/>
+<DELTA Variable="IMP_carParks" AttributeName="USE" AttributeValue="Y"/>
+<DELTA Variable="IMP_carParks" AttributeName="CALCMETHOD" AttributeValue="MANUAL"/>
+<DELTA Variable="IMP_carParks" AttributeName="INTERVALMIN" AttributeValue="0"/>
+<DELTA Variable="IMP_carParks" AttributeName="INTERVALMAX" AttributeValue="49"/>
+<DELTA Variable="IMP_carParks" AttributeName="REPLACEMETHOD" AttributeValue="MANUAL"/>
+<DELTA Variable="IMP_carParks" AttributeName="REPLACEMIN" AttributeValue="0"/>
+<DELTA Variable="IMP_carParks" AttributeName="REPLACEMAX" AttributeValue="0"/>
+<DELTA Variable="IMP_lat" AttributeName="USE" AttributeValue="N"/>
+<DELTA Variable="IMP_lng" AttributeName="USE" AttributeValue="N"/>
+<DELTA Variable="bathrooms" AttributeName="USE" AttributeValue="N"/>
+<DELTA Variable="buildingId" AttributeName="USE" AttributeValue="N"/>
+<DELTA Variable="builtUp" AttributeName="USE" AttributeValue="N"/>
+<DELTA Variable="carParks" AttributeName="USE" AttributeValue="N"/>
+<DELTA Variable="lat" AttributeName="USE" AttributeValue="N"/>
+<DELTA Variable="lng" AttributeName="USE" AttributeValue="N"/>
+<DELTA Variable="pricePerSizeUnitBuiltUp" AttributeName="USE" AttributeValue="N"/>
+<DELTA Variable="rental" AttributeName="USE" AttributeValue="N"/>
+</EmVariableAttributes>
+<EmTargetAttributes/>
+<EmFileProperties>
+<USERTRAINCODE Type="EXTERNAL" Extension="sas">
+<Data/>
+</USERTRAINCODE>
+<NEWVALUES Type="DATA">
+<Data>
+<Obs NAME="IMP_furnishing" LEVEL="Fully Furnished" TYPE="C" REPLACE_VALUE="Fully furnished"/>
+<Obs NAME="IMP_furnishing" LEVEL="Partly Furnished" TYPE="C" REPLACE_VALUE="Partly furnished"/>
+<Obs NAME="IMP_furnishing" LEVEL="_UNKNOWN_" TYPE="C" REPLACE_VALUE="_DEFAULT_"/>
+<Obs NAME="bedrooms" LEVEL="_UNKNOWN_" TYPE="C" REPLACE_VALUE="_DEFAULT_"/>
+<Obs NAME="district" LEVEL="_UNKNOWN_" TYPE="C" REPLACE_VALUE="_DEFAULT_"/>
+<Obs NAME="name" LEVEL="_UNKNOWN_" TYPE="C" REPLACE_VALUE="_DEFAULT_"/>
+<Obs NAME="propertyName" LEVEL="_UNKNOWN_" TYPE="C" REPLACE_VALUE="_DEFAULT_"/>
+<Obs NAME="propertyType" LEVEL="_UNKNOWN_" TYPE="C" REPLACE_VALUE="_DEFAULT_"/>
+<Obs NAME="unitType" LEVEL="" TYPE="C" REPLACE_VALUE="UNKNOWN"/>
+<Obs NAME="unitType" LEVEL="_UNKNOWN_" TYPE="C" REPLACE_VALUE="_DEFAULT_"/>
+</Data>
+<Metadata>
+<Variable NAME="Name" LABEL="Variable" LENGTH="32" FORMAT="" TYPE="C"/>
+<Variable NAME="LEVEL" LABEL="Formatted Value" LENGTH="80" FORMAT="" TYPE="C"/>
+<Variable NAME="TYPE" LABEL="Type" LENGTH="1" FORMAT="" TYPE="C"/>
+<Variable NAME="REPLACE_VALUE" LABEL="Replacement Value" LENGTH="200" FORMAT="" TYPE="C"/>
+</Metadata>
+</NEWVALUES>
+<EMNOTES Type="EXTERNAL" Extension="txt">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE CLASS="SASHELP.EMEXPL.STATEXPLORE.CLASS" COMPONENT="StatExplore" ID="Stat" X="620" Y="116" DESCRIPTION="StatExplore" DIAGRAMID="_ROOT_" PARENTID="" TOOLTYPE="EXPLORE" TOOLPREFIX="Stat">
+<PROPERTIES BySegment="N" Correlation="Y" Spearman="N" Pearson="Y" ChiSquare="Y" ChiSquareInterval="N" ChiSquareIntervalNBins="5" MaximumVars="1000" HideVariable="Y" DropRejected="Y" UseValidate="N" UseTest="N" UseScore="N" NObs="100000" IntervalDistribution="Y" ClassDistribution="Y" LevelSummary="Y" ForceRun="N" RunAction="Train" Component="StatExplore">
+<VariableProperties/>
+<EmVariableAttributes/>
+<EmTargetAttributes/>
+<EmFileProperties>
+<CROSSTAB Type="DATA">
+<Data/>
+<Metadata/>
+</CROSSTAB>
+<EMNOTES Type="EXTERNAL" Extension="txt">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE CLASS="SASHELP.EMEXPL.STATEXPLORE.CLASS" COMPONENT="StatExplore" ID="Stat2" X="405" Y="116" DESCRIPTION="StatExplore (2)" DIAGRAMID="_ROOT_" PARENTID="" TOOLTYPE="EXPLORE" TOOLPREFIX="Stat">
+<PROPERTIES BySegment="N" Correlation="Y" Spearman="N" Pearson="Y" ChiSquare="Y" ChiSquareInterval="N" ChiSquareIntervalNBins="5" MaximumVars="1000" HideVariable="Y" DropRejected="Y" UseValidate="N" UseTest="N" UseScore="N" NObs="100000" IntervalDistribution="Y" ClassDistribution="Y" LevelSummary="Y" ForceRun="N" RunAction="Train" Component="StatExplore">
+<VariableProperties/>
+<EmVariableAttributes/>
+<EmTargetAttributes/>
+<EmFileProperties>
+<CROSSTAB Type="DATA">
+<Data/>
+<Metadata/>
+</CROSSTAB>
+<EMNOTES Type="EXTERNAL" Extension="txt">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+<NODE CLASS="SASHELP.EMEXPL.STATEXPLORE.CLASS" COMPONENT="StatExplore" ID="Stat3" X="823" Y="121" DESCRIPTION="StatExplore (3)" DIAGRAMID="_ROOT_" PARENTID="" TOOLTYPE="EXPLORE" TOOLPREFIX="Stat">
+<PROPERTIES BySegment="N" Correlation="Y" Spearman="N" Pearson="Y" ChiSquare="Y" ChiSquareInterval="N" ChiSquareIntervalNBins="5" MaximumVars="1000" HideVariable="Y" DropRejected="Y" UseValidate="N" UseTest="N" UseScore="N" NObs="100000" IntervalDistribution="Y" ClassDistribution="Y" LevelSummary="Y" ForceRun="N" RunAction="Train" Component="StatExplore">
+<VariableProperties/>
+<EmVariableAttributes/>
+<EmTargetAttributes/>
+<EmFileProperties>
+<CROSSTAB Type="DATA">
+<Data/>
+<Metadata/>
+</CROSSTAB>
+<EMNOTES Type="EXTERNAL" Extension="txt">
+<Data/>
+</EMNOTES>
+</EmFileProperties>
+</PROPERTIES>
+</NODE>
+</NODES>
+<CONNECTIONS>
+<CONNECTION FROM="FIMPORT" TO="Filter"/>
+<CONNECTION FROM="Filter" TO="Impt"/>
+<CONNECTION FROM="Impt" TO="Stat"/>
+<CONNECTION FROM="Impt" TO="Repl"/>
+<CONNECTION FROM="Filter" TO="Stat2"/>
+<CONNECTION FROM="Repl" TO="Stat3"/>
+<CONNECTION FROM="Repl" TO="EMSave"/>
+</CONNECTIONS>
+<NOTES>
+<DATA><![CDATA[
+
+]]>
+</DATA>
+</NOTES>
+</Workspace>
+</_ROOT_>
